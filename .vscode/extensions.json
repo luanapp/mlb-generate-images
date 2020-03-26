@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "CoenraadS.bracket-pair-colorizer",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
+    "jpoissonnier.vscode-styled-components",
+    "mikestead.dotenv",
+    "mohsen1.prettify-json",
+    "msjsdiag.debugger-for-chrome",
+    "yzhang.markdown-all-in-one",
+  ]
+}

@@ -4,6 +4,7 @@
   "description": "Program for a AWS lambda that reads S3 images and uses Jimp to make a composition of them",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "npm test"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   "author": "Luana Pimentel",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "aws-sdk": "^2.646.0"
+    "aws-sdk": "^2.646.0",
+    "jimp": "^0.9.6"
   }
 }
