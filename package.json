@@ -2,9 +2,9 @@
   "name": "mlb-generate-images",
   "version": "0.0.1",
   "description": "Program for a AWS lambda that reads S3 images and uses Jimp to make a composition of them",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "npm test"
   },
   "keywords": [
@@ -17,6 +17,8 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "aws-sdk": "^2.646.0",
-    "jimp": "^0.9.6"
+    "jimp": "^0.9.6",
+    "moment": "^2.24.0",
+    "ramda": "^0.27.0"
   }
 }
