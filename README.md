@@ -1,6 +1,7 @@
-# Project Title
+# Make Lives Better - Image generation
 
-A nice project with a nice description
+This NodeJs project is a lambda function to generate random images used in the MLB bot used to control people mental health and activities.
+As the activities are being done, this API is called to generate the image corresponding to the % of completed activities
 
 ---
 ## Requirements
