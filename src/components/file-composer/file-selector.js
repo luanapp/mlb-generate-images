@@ -1,16 +1,15 @@
-const { POSITION_ORDER, POSITION_MAP } = require('./constants');
 const { shuffle } = require('../arrays');
 
-const selectFiles = quantity => {
+const selectFiles = (quantity, positionOrder, positionMap) => {
   const files = [];
   const currentFiles = new Set();
 
   let currentQty = 0;
 
-  POSITION_ORDER.forEach(positionName => {
-    const images = shuffle(POSITION_MAP[positionName].images.slice());
+  positionOrder.forEach(positionName => {
+    const images = shuffle(positionMap[positionName].images.slice());
 
-    POSITION_MAP[positionName].positions.every(position => {
+    positionMap[positionName].positions.every(position => {
       if (currentQty + 1 > quantity) {
         return false;
       }
@@ -24,7 +23,6 @@ const selectFiles = quantity => {
         return false;
       }
 
-      console.log(`position name: ${positionName}; images: ${images}, selected: ${nextImg}`);
       files.push({ image: nextImg, position });
       currentFiles.add(nextImg);
       currentQty += 1;
@@ -36,6 +34,23 @@ const selectFiles = quantity => {
   return files;
 };
 
+const getFilePositions = ({ images, percentage, positionOrder, positionMap }) => {
+  const fileNameKey = toFilenameKey(images);
+  return selectFiles(Math.ceil((percentage * images.length) / 100), positionOrder, positionMap).map(
+    ({ image, position }) => {
+      return { image: fileNameKey[image], position };
+    }
+  );
+};
+
+const toFilenameKey = (files = []) => {
+  return files.reduce((result, file) => Object.assign(result, { [getFilename(file)]: file }, {}), {});
+};
+
+const getFilename = file => {
+  return file.replace(/^.*[\\\/]/, '');
+};
+
 module.exports = {
-  selectFiles,
+  getFilePositions,
 };

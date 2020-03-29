@@ -26,7 +26,7 @@ const getFilesAddresses = async prefix => {
     const fileKeys = await getFileKeys(AWS_S3_BUCKET, prefix);
     return fileKeys.map(fileKey => `https://${AWS_S3_BUCKET}.s3-${AWS_REGION}.amazonaws.com/${fileKey}`);
   } catch (error) {
-    console.warn(error);
+    console.error(error);
     return [];
   }
 };
