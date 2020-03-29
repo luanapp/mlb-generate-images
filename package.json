@@ -2,9 +2,10 @@
   "name": "mlb-generate-images",
   "version": "0.0.1",
   "description": "Program for a AWS lambda that reads S3 images and uses Jimp to make a composition of them",
-  "main": "src/index.js",
+  "main": "src/handler.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/handler.js",
+    "debug": "export SLS_DEBUG=* && node --inspect ./node_modules/.bin/serverless offline -s dev",
     "test": "npm test"
   },
   "keywords": [
@@ -18,7 +19,10 @@
   "dependencies": {
     "aws-sdk": "^2.646.0",
     "jimp": "^0.9.6",
-    "moment": "^2.24.0",
     "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.67.0",
+    "serverless-offline": "^6.1.2"
   }
 }

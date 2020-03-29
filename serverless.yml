@@ -19,7 +19,8 @@ service: movile-mlb-wellness-bot-image-generator
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
-
+plugins:
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs12.x
@@ -65,13 +66,11 @@ functions:
           path: image/generate
           method: get
     environment:
-      COMPOSITE_FILE_FOLDER: file-dir
-      COMPOSITE_FILENAME_PREFIX: garden
-      COMPOSITE_FILE_EXTENSION: png
       AWS_S3_BUCKET: mlb-movile
-      AWS_S3_PLANTS_FOLDER: bot/plants
-      AWS_S3_BASE_FILE_FOLDER: bot/base
-      AWS_S3_BASE_FILENAME: garden-base.png
+      PLANTS_FOLDER: bot/plants/
+      STANDS_FOLDER: bot/stand/
+      BASE_FILE_FOLDER: bot/base
+      BASE_FILENAME: garden-base.png
 
 # you can add CloudFormation resource templates here
 #resources:

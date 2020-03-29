@@ -1,18 +1,23 @@
-const selectRandomElements = (arr, n) => {
-  const result = new Array(n);
-  const len = arr.length;
-  const taken = new Array(len);
+const shuffle = array => {
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
-  if (n > len) throw new RangeError('getRandom: more elements taken than available');
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
 
-  while (n--) {
-    const x = Math.floor(Math.random() * len);
-    result[n] = arr[x in taken ? taken[x] : x];
-    taken[x] = --len in taken ? taken[len] : len;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
-  return result;
+
+  return array;
 };
 
 module.exports = {
-  selectRandomElements,
+  shuffle,
 };
