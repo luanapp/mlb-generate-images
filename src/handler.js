@@ -9,25 +9,13 @@ const generate = async event => {
   const percentage = pathOr(100, ['queryStringParameters', 'percentage'], event);
   const baseFile = getFileGlobalUrl(BASE_FILE_FOLDER, BASE_FILENAME);
 
-  const standsFiles = await getFilesAddresses(STANDS_FOLDER);
-  const standsParams = {
-    images: standsFiles,
+  const standsBuffer = await generateBuffer({ percentage, imageFolder: STANDS_FOLDER, positions: stands, baseFile });
+  const compositeBuffer = await generateBuffer({
     percentage,
-    positionOrder: stands.POSITION_ORDER,
-    positionMap: stands.POSITION_MAP,
-  };
-  const standFilesPositions = getFilePositions(standsParams);
-  const standsBuffer = await composite(baseFile, standFilesPositions);
-
-  const plantsFiles = await getFilesAddresses(PLANTS_FOLDER);
-  const plantsParams = {
-    images: plantsFiles,
-    percentage,
-    positionOrder: plants.POSITION_ORDER,
-    positionMap: plants.POSITION_MAP,
-  };
-  const plantsFilesPositions = getFilePositions(plantsParams);
-  const compositeBuffer = await composite(standsBuffer, plantsFilesPositions);
+    imageFolder: PLANTS_FOLDER,
+    positions: plants,
+    baseFile: standsBuffer,
+  });
 
   return {
     statusCode: 200,
@@ -38,6 +26,18 @@ const generate = async event => {
     body: compositeBuffer.toString('base64'),
     isBase64Encoded: true,
   };
+};
+
+const generateBuffer = async ({ percentage, imageFolder, positions: { POSITION_MAP, POSITION_ORDER }, baseFile }) => {
+  const plantsFiles = await getFilesAddresses(imageFolder);
+  const plantsParams = {
+    images: plantsFiles,
+    percentage,
+    positionOrder: POSITION_ORDER,
+    positionMap: POSITION_MAP,
+  };
+  const plantsFilesPositions = getFilePositions(plantsParams);
+  return composite(baseFile, plantsFilesPositions);
 };
 
 module.exports = { generate };
