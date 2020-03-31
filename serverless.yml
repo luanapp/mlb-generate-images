@@ -1,9 +1,13 @@
 service: movile-mlb-wellness-bot-image-generator
-#app: image-generator
-#org: luanapp
+app: movile-mlb
+org: luanapp
 
 plugins:
   - serverless-offline
+
+custom:
+  bucket: mlb-movile
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -11,12 +15,12 @@ provider:
   stage: dev
   region: sa-east-1
 
-iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "s3:GetObject"
-      - "s3:ListBucket"
-    Resource: "arn:aws:s3:::mlb-movile/bot/*"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+        - "s3:ListBucket"
+      Resource: "arn:aws:s3:::${self:custom.bucket}/bot/*"
 
 functions:
   image-generator:
@@ -26,7 +30,7 @@ functions:
           path: image/generate
           method: get
     environment:
-      AWS_S3_BUCKET: mlb-movile
+      AWS_S3_BUCKET: ${self:custom.bucket}
       PLANTS_FOLDER: bot/plants/
       STANDS_FOLDER: bot/stand/
       BASE_FILE_FOLDER: bot/base
