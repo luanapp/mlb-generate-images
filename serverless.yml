@@ -12,9 +12,8 @@
 # Happy Coding!
 
 service: movile-mlb-wellness-bot-image-generator
-# app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: image-generator
+org: luanapp
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -51,10 +50,6 @@ functions:
         Action:
           - "s3:ListBucket"
         Resource: "arn:aws:s3:::mlb-movile/bot/*"
-
-package:
-  exclude:
-    - node_modules/**
 
 # you can add CloudFormation resource templates here
 #resources:
