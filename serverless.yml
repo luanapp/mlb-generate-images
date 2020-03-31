@@ -1,6 +1,6 @@
 service: movile-mlb-wellness-bot-image-generator
-app: movile-mlb
-org: luanapp
+#app: movile-mlb
+#org: luanapp
 
 plugins:
   - serverless-offline
