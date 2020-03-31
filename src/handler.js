@@ -20,7 +20,7 @@ const generate = async event => {
   return {
     statusCode: 200,
     headers: {
-      'Content-type': 'image/png',
+      'Content-Type': 'image/png',
       'Content-Disposition': 'attachment; filename="garden.png"',
     },
     body: compositeBuffer.toString('base64'),
