@@ -12,8 +12,8 @@
 # Happy Coding!
 
 service: movile-mlb-wellness-bot-image-generator
-app: image-generator
-org: luanapp
+#app: image-generator
+#org: luanapp
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
