@@ -1,6 +1,7 @@
-const { getFileGlobalUrl, getFilesAddresses } = require('./list-files');
+const { getFileGlobalUrl, getFilesAddresses, getFileBuffer } = require('./list-files');
 
 module.exports = {
   getFileGlobalUrl,
   getFilesAddresses,
+  getFileBuffer,
 };

@@ -1,4 +1,5 @@
 const { BLEND_EXCLUSION, BLEND_DESTINATION_OVER, MIME_PNG, read } = require('jimp');
+const { getFileBuffer } = require('../s3');
 
 const composite = async (base, filePositions = []) => {
   try {
@@ -24,7 +25,8 @@ const composite = async (base, filePositions = []) => {
 const getFileJimps = positions => {
   return Promise.all(
     positions.map(async ({ image, position }) => {
-      const jimp = await read(image);
+      const imageBuffer = await getFileBuffer(image);
+      const jimp = await read(imageBuffer);
       return {
         fileName: image,
         jimp,

@@ -23,12 +23,16 @@ const getFileKeys = async (bucket, prefix) => {
 
 const getFilesAddresses = async prefix => {
   try {
-    const fileKeys = await getFileKeys(AWS_S3_BUCKET, prefix);
-    return fileKeys.map(fileKey => `https://${AWS_S3_BUCKET}.s3-${AWS_REGION}.amazonaws.com/${fileKey}`);
+    return getFileKeys(AWS_S3_BUCKET, prefix);
   } catch (error) {
     console.error(error);
     return [];
   }
+};
+
+const getFileBuffer = async fileKey => {
+  const obj = await s3.getObject({ Bucket: AWS_S3_BUCKET, Key: fileKey }).promise();
+  return obj.Body;
 };
 
 const getFileGlobalUrl = (folder, filename) => {
@@ -36,6 +40,7 @@ const getFileGlobalUrl = (folder, filename) => {
 };
 
 module.exports = {
+  getFileBuffer,
   getFileGlobalUrl,
   getFilesAddresses,
 };

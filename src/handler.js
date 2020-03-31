@@ -21,6 +21,7 @@ const generate = async event => {
     return {
       statusCode: 200,
       headers: {
+        Accept: 'image/png',
         'Content-Type': 'image/png',
         'Content-Disposition': 'inline; filename="garden.png"',
       },
