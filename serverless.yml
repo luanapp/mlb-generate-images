@@ -46,7 +46,11 @@ functions:
       - Effect: "Allow"
         Action:
           - "s3:GetObject"
-        Resource: "arn:aws:s3:::mlb-movile/*"
+        Resource: "arn:aws:s3:::mlb-movile/bot/*"
+      - Effect: "Allow"
+        Action:
+          - "s3:ListBucket"
+        Resource: "arn:aws:s3:::mlb-movile/bot/*"
 
 package:
   exclude:
