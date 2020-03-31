@@ -10,9 +10,13 @@ custom:
 
 provider:
   name: aws
+  allowed-runtimes:
+    - nodejs12.x
   runtime: nodejs12.x
 
   stage: dev
+  allowed-regions:
+    - sa-east-1
   region: sa-east-1
 
   iamRoleStatements:
