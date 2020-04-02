@@ -61,6 +61,9 @@ dist
 
 # Serverless directories
 .serverless/
+s_image_generator.js
+serverless_sdk/
+
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test

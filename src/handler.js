@@ -11,14 +11,14 @@ const generate = async event => {
     const baseFile = getFileGlobalUrl(BASE_FILE_FOLDER, BASE_FILENAME);
 
     const standsBuffer = await generateBuffer({
-      percentage,
+      percentage: percentage < 25 ? 0 : percentage,
       imageFolder: STANDS_FOLDER,
       positions: stands,
       baseFile,
       centralize: false,
     });
     const compositeBuffer = await generateBuffer({
-      percentage: percentage < 25 ? 0 : percentage,
+      percentage: percentage,
       imageFolder: PLANTS_FOLDER,
       positions: plants,
       baseFile: standsBuffer,
