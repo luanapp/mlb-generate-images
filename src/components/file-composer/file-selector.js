@@ -1,4 +1,5 @@
 const { shuffle } = require('../arrays');
+const { counter } = require('../positions');
 
 const selectFiles = (quantity, positionOrder, positionMap) => {
   const files = [];
@@ -36,7 +37,8 @@ const selectFiles = (quantity, positionOrder, positionMap) => {
 
 const getFilePositions = ({ images, percentage, positionOrder, positionMap }) => {
   const fileNameKey = toFilenameKey(images);
-  return selectFiles(Math.ceil((percentage * images.length) / 100), positionOrder, positionMap).map(
+  const totalPositions = counter(positionMap);
+  return selectFiles(Math.round((percentage * totalPositions) / 100), positionOrder, positionMap).map(
     ({ image, position }) => {
       return { image: fileNameKey[image], position };
     }

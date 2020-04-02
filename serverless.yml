@@ -14,8 +14,6 @@ provider:
 
   stage: dev
 
-  allowed-regions:
-    - sa-east-1
   region: sa-east-1
 
   iamRoleStatements:
@@ -38,15 +36,3 @@ functions:
       STANDS_FOLDER: bot/stand/
       BASE_FILE_FOLDER: bot/base
       BASE_FILENAME: garden-base.png
-
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"

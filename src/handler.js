@@ -10,12 +10,19 @@ const generate = async event => {
     const percentage = pathOr(100, ['queryStringParameters', 'percentage'], event);
     const baseFile = getFileGlobalUrl(BASE_FILE_FOLDER, BASE_FILENAME);
 
-    const standsBuffer = await generateBuffer({ percentage, imageFolder: STANDS_FOLDER, positions: stands, baseFile });
-    const compositeBuffer = await generateBuffer({
+    const standsBuffer = await generateBuffer({
       percentage,
+      imageFolder: STANDS_FOLDER,
+      positions: stands,
+      baseFile,
+      centralize: false,
+    });
+    const compositeBuffer = await generateBuffer({
+      percentage: percentage < 25 ? 0 : percentage,
       imageFolder: PLANTS_FOLDER,
       positions: plants,
       baseFile: standsBuffer,
+      centralize: true,
     });
 
     return {
@@ -42,7 +49,13 @@ const generate = async event => {
   }
 };
 
-const generateBuffer = async ({ percentage, imageFolder, positions: { POSITION_MAP, POSITION_ORDER }, baseFile }) => {
+const generateBuffer = async ({
+  percentage,
+  imageFolder,
+  positions: { POSITION_MAP, POSITION_ORDER },
+  baseFile,
+  centralize,
+}) => {
   const plantsFiles = await getFilesAddresses(imageFolder);
   const plantsParams = {
     images: plantsFiles,
@@ -51,7 +64,7 @@ const generateBuffer = async ({ percentage, imageFolder, positions: { POSITION_M
     positionMap: POSITION_MAP,
   };
   const plantsFilesPositions = getFilePositions(plantsParams);
-  return composite(baseFile, plantsFilesPositions);
+  return composite(baseFile, plantsFilesPositions, centralize);
 };
 
 module.exports = { generate };

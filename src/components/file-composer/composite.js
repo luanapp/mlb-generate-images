@@ -1,14 +1,18 @@
 const { BLEND_EXCLUSION, BLEND_DESTINATION_OVER, MIME_PNG, read } = require('jimp');
 const { getFileBuffer } = require('../s3');
 
-const composite = async (base, filePositions = []) => {
+const composite = async (base, filePositions = [], centralize = false) => {
   try {
     const jimps = getFileJimps(filePositions);
 
     const baseJimp = await read(base);
     (await jimps).forEach(async jp => {
-      const position = jp.position;
-      baseJimp.composite(jp.jimp, jp.position.X, position.Y - jp.jimp.bitmap.height, {
+      const {
+        position: { X, Y, centralized },
+        jimp,
+      } = jp;
+      const newX = centralized ? Math.round(X - jimp.bitmap.width / 2) : X;
+      baseJimp.composite(jimp, newX, Y - jimp.bitmap.height, {
         mode: BLEND_EXCLUSION | BLEND_DESTINATION_OVER,
         opacityDest: 1,
         opacitySource: 1,
