@@ -19,7 +19,7 @@
   "dependencies": {
     "aws-sdk": "^2.646.0",
     "jimp": "^0.9.6",
-    "ramda": "^0.27.0"
+    "ramda": "^0.27.1"
   },
   "devDependencies": {
     "jest": "^25.2.4",
