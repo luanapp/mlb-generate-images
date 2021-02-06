@@ -18,7 +18,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "aws-sdk": "^2.646.0",
-    "jimp": "^0.9.6",
+    "jimp": "^0.16.1",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
