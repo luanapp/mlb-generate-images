@@ -1,6 +1,6 @@
 from_owner:
   - dependabot
 required_labels:
-  - dependencies
+  - dependabot
 apply_labels:
   - autoapproved
