@@ -1,0 +1,7 @@
+
+from_owner:
+  - dependabot
+required_labels:
+  - dependabot
+apply_labels:
+  - autoapproved
