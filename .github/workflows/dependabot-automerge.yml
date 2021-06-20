@@ -1,4 +1,4 @@
-name: CI
+name: Merge Dependabot
 on: [push, pull_request]
 
 jobs:
