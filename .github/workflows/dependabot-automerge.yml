@@ -1,5 +1,10 @@
 name: Merge Dependabot
-on: [push, pull_request]
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - 'Integrate'
 
 jobs:
   automerge:
@@ -7,4 +12,5 @@ jobs:
     steps:
       - uses: fastify/github-action-merge-dependabot@v2.1.1
         with:
-          github-token: ${{ secrets.TOMANOCU_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRESET: DEPENDABOT_MINOR
