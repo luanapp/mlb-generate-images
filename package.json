@@ -17,7 +17,7 @@
   "author": "Luana Pimentel",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "aws-sdk": "^2.931.0",
+    "aws-sdk": "^2.949.0",
     "jimp": "^0.16.1",
     "ramda": "^0.27.1"
   },
