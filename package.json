@@ -22,7 +22,7 @@
     "ramda": "^0.27.1"
   },
   "devDependencies": {
-    "jest": "^27.0.4",
+    "jest": "^27.0.6",
     "serverless": "^2.46.0",
     "serverless-offline": "^7.0.0"
   }
