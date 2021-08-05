@@ -1,18 +1,23 @@
-name: Merge Dependabot
-on:
-  workflow_run:
-    types:
-      - completed
-    workflows:
-      - 'Integrate'
+name: Dependabot auto-merge
+on: pull_request_target
+
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
-  automerge:
+  dependabot:
     runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
-      - name: Merge me!
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        uses: ridedott/merge-me-action@v2
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.1.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PRESET: DEPENDABOT_MINOR
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{contains(steps.metadata.outputs.dependency-names, 'my-dependency') && steps.metadata.outputs.update-type == 'version-update:semver-patch'}}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
