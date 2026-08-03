@@ -2874,7 +2874,7 @@ dayjs@^1.11.8:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.21.tgz#57f87562e62de76f3c704bd2b8d522fc33068eb2"
   integrity sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==
 
-debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.3, debug@^4.3.4:
+debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.4:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -6543,11 +6543,11 @@ validate-npm-package-name@^3.0.0:
     builtins "^1.0.3"
 
 velocityjs@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/velocityjs/-/velocityjs-2.0.6.tgz#fbd5ec5bc6e75a889f73c1d67baddd4e0af7b35a"
-  integrity sha512-QMYLeYLBX6eqekCin3OPmDAHapaUx3foNFE264ml1/yxRZ8TUUlI1+u6rtN4E8tKNqwzpRPeNgJtjLbgRNK4fw==
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/velocityjs/-/velocityjs-2.1.7.tgz#9d17341445128e747a6d564f2288b181d64387b0"
+  integrity sha512-IGvvHWzM2VJbel+RIlZv3lnNCiasoOtBvLeK3gaWfXm3ynbWpth7blyNLvDuj+sMR/NiTA4jmNzYJqQ8dT1EqA==
   dependencies:
-    debug "^4.3.3"
+    debug "^4.3.4"
 
 walker@^1.0.8:
   version "1.0.8"
